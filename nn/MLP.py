@@ -12,6 +12,9 @@ class MLP:
             n_layers: (int) Number of layers (minus input layer)
             layer_dims: (list[int]) Size of each layers (Input, Hiddens..., Output)
         '''
+        if len(layer_dims) - 1 != n_layers:
+            raise ValueError("Mismatch: n_layers must equal len(layer_dims) - 1.")
+        
         self.layers = []
         for i in range(n_layers):
             self.layers.append(LinearLayer(layer_dims[i], layer_dims[i+1]))
@@ -126,7 +129,7 @@ if __name__ == '__main__':
         
     X_train = np.array(X_train) / 255.0
 
-    model = MLP(n_layers=3, layer_dims=[784, 10, 10, 10])
+    model = MLP(n_layers=4, layer_dims=[784, 20, 20, 20, 10])
 
     model.train(X_train, y_train)
-    model.save_model("models/MNIST_MLP_")
+    model.save_model("models/MNIST_MLP_4")

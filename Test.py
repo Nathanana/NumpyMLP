@@ -13,8 +13,9 @@ except Exception as e:
     print(f"Error loading MNIST data: {e}")
     exit(1)
     
-model = MLP(n_layers=3, layer_dims=[784, 512, 512, 10]) # Model parameters don't need to match loaded model
-model.load_model('models/MNIST_MLP_3.npz') # Change model here
+# Model parameters don't need to match loaded model, but n_layers and length of dims do
+model = MLP(n_layers=4, layer_dims=[784, 512, 512, 10, 10]) 
+model.load_model('models/MNIST_MLP_4.npz') # Change model here
 
 X_test = np.array(X_test) / 255.0
 y_pred = model.predict(X_test)
