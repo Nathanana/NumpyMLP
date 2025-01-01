@@ -41,7 +41,7 @@ plt.show()
 mismatch = [i for i, (y_t, y_p) in enumerate(zip(y_test, y_pred)) if (y_t != y_p)]
 
 # Shows 25 incorrectly predicted images
-for i in range(25):
+for i in range(min(25, len(mismatch))):
     image = X_test[mismatch[i]].reshape(28, 28)
     plt.subplot(5, 5, i+1)
     plt.imshow(image, cmap='gray')
