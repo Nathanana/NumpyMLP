@@ -31,3 +31,20 @@ but this was definitely more of an learning project than a full production.
 
 The app was meant to help visualize, though there must be enough differences between that implementation and the actual training data that it's accuracy ends up closer to 60%, It's still cool to see, though.
 It works by taking the drawn image and then scaling it all the way down to the same resolution as the data.
+
+## Math Summary
+
+The MLP takes the image in as a vector of pixel values. This can be imagined as a 28x28 image turning into one long 784 length vector. Once the MLP has the vector, each neuron in the next layer multiplies every
+neuron in the previous layer by a specific weight and then adds a bias. This is done until an output is found. The output is then fed through a cost function, which calculates how wrong the model was. 
+
+To put it short, the cost is like a ball up on a hill with lots of potential energy. We're looking for the gradient, or direction which would bring it higher, increasing it's potential energy the most out of all other directions,
+and then moving it in the opposite direction. The position on the hill, x and y, are like the weights, and the height or the potential energy is like the cost.
+
+One way of looking at the cost function is as a function of the actual output and an expected output, but another is by looking at it as a function of the weights and biases, the input, and the expected output. In this way, we have
+thousands of input variables, and we can now find the rate of change of the cost function with respect to each one. This is the same as finding the gradient of a function like $f(x,y)$ which is done via $\triangledown \cdot f(x, y)$.
+Our function is much more complex, but the same in principle. To then maximize the decrease in our cost function, we subtract the gradient (typically multiplied by a small coefficient) from every weight and bias, then run through
+the process again. 
+
+To find $\frac{\partial C}{\partial w_i}$ where C is the cost and $w_i$ is some arbitrary weight, the chain rule is used. $\frac{\partial C}{\partial w_i} = \frac{\partial C}{\partial a} \cdot \frac{\partial a}{\partial z} \cdot \frac{\partial z}{\partial w}$
+where a is the activation of the last layers (the models prediction), z is the linear combination of inputs in the previous layer of the network, and w is the weights of the neuron. This is not an easy concept, and there are much
+better resources than I to explain it more in depth, so this is where I'll leave it.
