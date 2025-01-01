@@ -28,7 +28,7 @@ print(f"Test Accuracy: {correct_percentage}%")
 
 j = np.random.randint(0, len(X_test) - 25)
 
-# Shows 25 correctly predicted images
+# Shows 25 predicted images
 for i in range(j, j + 25):
     image = X_test[i].reshape(28, 28)
     plt.subplot(5, 5, i-j+1)
