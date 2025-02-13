@@ -4,8 +4,11 @@ import matplotlib.pyplot as plt
 import tkinter as tk
 from PIL import Image, ImageDraw
 
-model = MLP(n_layers=3, layer_dims=[784, 512, 512, 10])
-model.load_model('models/MNIST_MLP_3.npz')
+LIBRARY = "" # np or pytorch
+MODEL = ""
+
+model = MLP()
+model.load_model(f'models/{LIBRARY}/{MODEL}.npz')
 
 class DrawingApp:
     def __init__(self, root):
