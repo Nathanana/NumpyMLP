@@ -1,14 +1,19 @@
 import numpy as np
-from nn.MLP import MLP
-import matplotlib.pyplot as plt
+from lnn.NumpyMLP import MLP
+from lnn.PytorchMLP import ptMLP
 import tkinter as tk
 from PIL import Image, ImageDraw
 
 LIBRARY = "" # np or pytorch
 MODEL = ""
 
-model = MLP()
-model.load_model(f'models/{LIBRARY}/{MODEL}.npz')
+if LIBRARY == "np":
+    model = MLP()
+    model.load_model(f'models/{LIBRARY}/{MODEL}.npz')
+    
+elif LIBRARY == "pytorch":
+    model = ptMLP()
+    model.load_state_dict(f'models/{LIBRARY}/{MODEL}.pth')
 
 class DrawingApp:
     def __init__(self, root):

@@ -1,10 +1,9 @@
 import numpy as np
-from nn.MLP import MLP
+from lnn.NumpyMLP import MLP
 import matplotlib.pyplot as plt
 import tkinter as tk
 from mnist import MNIST
 
-LIBRARY = "np" # np or pytorch
 MODEL = "MNIST_MLP_1"
 
 mndata = MNIST("samples")
@@ -16,7 +15,7 @@ except Exception as e:
     exit(1)
 
 model = MLP() 
-model.load_model(f'models/{LIBRARY}/{MODEL}.npz')
+model.load_model(f'models/np/{MODEL}.npz')
 
 X_test = np.array(X_test) / 255.0
 y_pred = model.predict(X_test)

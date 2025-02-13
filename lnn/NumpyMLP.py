@@ -81,7 +81,7 @@ class MLP:
                 running_loss.append(loss)
                 
             avg_loss = sum(running_loss)/len(running_loss)
-            print(f"Epoch: {epoch}, Loss: {avg_loss}")
+            print(f"Epoch: [{epoch + 1}/{epochs}], Loss: {avg_loss}")
             
     def save_model(self, file_path):
         '''
